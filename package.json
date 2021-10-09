@@ -18,6 +18,9 @@
     "type": "git",
     "url": "https://github.com/matteodisabatino/express-prometheus-middleware"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "express",
     "express prometheus",
