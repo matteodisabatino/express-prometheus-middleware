@@ -1,3 +1,2 @@
-export declare const getURLRegExp: (url: string) => RegExp;
-export declare const isPathExcluded: (excludePaths: string[], path: string) => boolean;
+export declare const getUrlRegExp: (url: string) => RegExp;
 //# sourceMappingURL=utils.d.ts.map

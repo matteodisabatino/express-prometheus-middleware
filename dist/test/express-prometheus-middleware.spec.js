@@ -1,23 +1,24 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const express_1 = (0, tslib_1.__importDefault)(require("express"));
-const supertest_1 = (0, tslib_1.__importDefault)(require("supertest"));
-const ava_1 = (0, tslib_1.__importDefault)(require("ava"));
-const index_1 = (0, tslib_1.__importDefault)(require("../src/index"));
+const express_1 = tslib_1.__importDefault(require("express"));
+const supertest_1 = tslib_1.__importDefault(require("supertest"));
+const ava_1 = tslib_1.__importDefault(require("ava"));
+const index_1 = require("../src/index");
 let app;
+const epm = new index_1.ExpressPrometheusMiddleware({
+    exclude: (req) => req.path === '/test1',
+    excludePaths: ['/test2']
+});
 ava_1.default.before(() => {
     app = (0, express_1.default)();
-    app.use((0, index_1.default)({
-        exclude: (req) => req.path === '/test1',
-        excludePaths: ['/test2']
-    }));
+    app.use(epm.handler);
     app.get('/test1', (req, res) => res.sendStatus(200));
     app.get('/test2', (req, res) => res.sendStatus(200));
     app.get('/test3', (req, res) => res.sendStatus(200));
     app.get('/test4', (req, res) => res.sendStatus(200));
 });
-(0, ava_1.default)('Should get metrics data', (t) => (0, tslib_1.__awaiter)(void 0, void 0, void 0, function* () {
+(0, ava_1.default)('Should get metrics data', (t) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     // Call routes to get information about
     yield (0, supertest_1.default)(app).get('/test1');
     yield (0, supertest_1.default)(app).get('/test2');

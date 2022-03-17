@@ -3,16 +3,17 @@ import express from 'express'
 import request from 'supertest'
 import test from 'ava'
 
-import expressPrometheusMiddleware from '../src/index'
+import { ExpressPrometheusMiddleware } from '../src/index'
 
 let app: express.Express
+const epm = new ExpressPrometheusMiddleware({
+  exclude: (req: express.Request) => req.path === '/test1',
+  excludePaths: ['/test2']
+})
 
 test.before(() => {
   app = express()
-  app.use(expressPrometheusMiddleware({
-    exclude: (req: express.Request) => req.path === '/test1',
-    excludePaths: ['/test2']
-  }))
+  app.use(epm.handler)
 
   app.get('/test1', (req, res) => res.sendStatus(200))
   app.get('/test2', (req, res) => res.sendStatus(200))
