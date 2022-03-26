@@ -1,6 +1,11 @@
 
 
-# 2.0.0 (2022-03-26)
+## 2.0.1 (2022-03-26)
+
+
+### Bug Fixes
+
+* fixed CHANGELOG ([7dca654](https://github.com/matteodisabatino/express-prometheus-middleware/commit/7dca65420ae9a904563a75e96390dbf9f1743a15))# 2.0.0 (2022-03-26)
 
 
 ### Code Refactoring
