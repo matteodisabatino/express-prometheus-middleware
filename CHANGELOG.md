@@ -5,7 +5,10 @@
 
 ### Bug Fixes
 
-* fixed CHANGELOG ([7dca654](https://github.com/matteodisabatino/express-prometheus-middleware/commit/7dca65420ae9a904563a75e96390dbf9f1743a15))# 2.0.0 (2022-03-26)
+* fixed CHANGELOG ([7dca654](https://github.com/matteodisabatino/express-prometheus-middleware/commit/7dca65420ae9a904563a75e96390dbf9f1743a15))
+
+
+# 2.0.0 (2022-03-26)
 
 
 ### Code Refactoring
@@ -16,7 +19,9 @@
 ### BREAKING CHANGES
 
 * configuration variables are now readonly at all effects
-* property "version" is not static# 1.0.0 (2022-03-17)
+* property "version" is now static
+
+# 1.0.0 (2022-03-17)
 
 
 ### Code Refactoring
