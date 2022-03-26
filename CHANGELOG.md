@@ -1,6 +1,17 @@
 
 
-# 1.0.0 (2022-03-17)
+# 2.0.0 (2022-03-26)
+
+
+### Code Refactoring
+
+* private variables moved to separate, non-exported class ([6e9e5cc](https://github.com/matteodisabatino/express-prometheus-middleware/commit/6e9e5cc41f88a08f7d22fdf0a5de38be1d28bb39))
+
+
+### BREAKING CHANGES
+
+* * configuration variables are now readonly at all effects
+* property "version" is not static# 1.0.0 (2022-03-17)
 
 
 ### Code Refactoring
