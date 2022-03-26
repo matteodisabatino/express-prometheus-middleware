@@ -10,7 +10,7 @@
 
 ### BREAKING CHANGES
 
-* * configuration variables are now readonly at all effects
+* configuration variables are now readonly at all effects
 * property "version" is not static# 1.0.0 (2022-03-17)
 
 
