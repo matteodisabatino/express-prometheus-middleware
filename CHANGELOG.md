@@ -12,7 +12,7 @@
 
 * The module now exports a class
 * express is still a peer dependency but version 2 is no longer supported
-* prom-client is now required as peer dependency## 0.0.1 (2021-10-09)
+* prom-client is now required as peer dependency
 
 
 ## 0.0.1 (2021-10-09)

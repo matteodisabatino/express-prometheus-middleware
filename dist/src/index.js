@@ -10,6 +10,7 @@ const semver_1 = tslib_1.__importDefault(require("semver"));
 const data_types_1 = require("./libs/data_types");
 const utils_1 = require("./libs/utils");
 const package_json_1 = tslib_1.__importDefault(require("../package.json"));
+const privateVariablesInstanceMap = new WeakMap();
 const collectGarbageCollectionMetrics = () => {
     const labelNames = ['gctype'];
     const countMetric = new prom_client_1.default.Counter({
@@ -133,15 +134,8 @@ const collectGarbageCollectionMetrics = () => {
         }
     });
 };
-const isPathExcluded = (excludePaths, path) => {
-    return excludePaths.some((pathToExclude) => {
-        const regexp = (0, utils_1.getUrlRegExp)(pathToExclude);
-        return regexp.test(path);
-    });
-};
-class ExpressPrometheusMiddleware {
+class ExpressPrometheusMiddlewarePrivateVariables {
     constructor(options = {}) {
-        this.version = package_json_1.default.version;
         const defaultOptions = Object.freeze({
             collectDefaultMetrics: true,
             collectGCMetrics: true,
@@ -154,7 +148,12 @@ class ExpressPrometheusMiddleware {
         this.collectGCMetrics = opts.collectGCMetrics;
         this.exclude = opts.exclude;
         this.excludePaths = opts.excludePaths;
-        this.url = opts.url;
+        this.url = opts.url.startsWith('/') ? opts.url : `/${opts.url}`;
+    }
+}
+class ExpressPrometheusMiddleware {
+    constructor(options = {}) {
+        privateVariablesInstanceMap.set(this, new ExpressPrometheusMiddlewarePrivateVariables(options));
         if (this.collectDefaultMetrics) {
             const defaultMetricsOptions = Object.assign({}, this.collectDefaultMetrics);
             prom_client_1.default.collectDefaultMetrics(defaultMetricsOptions);
@@ -162,8 +161,21 @@ class ExpressPrometheusMiddleware {
         if (this.collectGCMetrics) {
             collectGarbageCollectionMetrics();
         }
-        // After transpiling to JavaScript, readonly properties can be overwritten. Freezing the object avoids this.
-        Object.freeze(this);
+    }
+    static get version() {
+        return package_json_1.default.version;
+    }
+    get collectDefaultMetrics() {
+        return privateVariablesInstanceMap.get(this).collectDefaultMetrics;
+    }
+    get collectGCMetrics() {
+        return privateVariablesInstanceMap.get(this).collectGCMetrics;
+    }
+    get exclude() {
+        return privateVariablesInstanceMap.get(this).exclude;
+    }
+    get excludePaths() {
+        return privateVariablesInstanceMap.get(this).excludePaths;
     }
     get handler() {
         const urlRegex = (0, utils_1.getUrlRegExp)(this.url);
@@ -209,7 +221,7 @@ class ExpressPrometheusMiddleware {
                 if (contractExclude(req)) {
                     return next();
                 }
-                if (isPathExcluded(this.excludePaths, req.path)) {
+                if ((0, utils_1.isPathExcluded)(this.excludePaths, req.path)) {
                     return next();
                 }
                 const endTimer = HTTPDuration.startTimer();
@@ -228,6 +240,9 @@ class ExpressPrometheusMiddleware {
                 next(e);
             }
         };
+    }
+    get url() {
+        return privateVariablesInstanceMap.get(this).url;
     }
 }
 exports.ExpressPrometheusMiddleware = ExpressPrometheusMiddleware;

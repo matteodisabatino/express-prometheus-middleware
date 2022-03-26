@@ -15,10 +15,11 @@ import {
   ExpressRequest,
   Options
 } from './libs/data_types'
-import { getUrlRegExp } from './libs/utils'
+import { getUrlRegExp, isPathExcluded } from './libs/utils'
 
 import manifest from '../package.json'
 
+const privateVariablesInstanceMap = new WeakMap()
 const collectGarbageCollectionMetrics = (): void => {
   const labelNames = ['gctype']
   const countMetric = new Prometheus.Counter({
@@ -160,20 +161,12 @@ const collectGarbageCollectionMetrics = (): void => {
   })
 }
 
-const isPathExcluded = (excludePaths: string[], path: string): boolean => {
-  return excludePaths.some((pathToExclude: string) => {
-    const regexp: RegExp = getUrlRegExp(pathToExclude)
-    return regexp.test(path)
-  })
-}
-
-export class ExpressPrometheusMiddleware {
+class ExpressPrometheusMiddlewarePrivateVariables {
   readonly collectDefaultMetrics: boolean | Prometheus.DefaultMetricsCollectorConfiguration
   readonly collectGCMetrics: boolean
   readonly exclude: (req: express.Request) => boolean
   readonly excludePaths: string[]
   readonly url: string
-  readonly version: string = manifest.version
 
   constructor (options: Static<typeof Options> = {}) {
     const defaultOptions = Object.freeze({
@@ -189,7 +182,13 @@ export class ExpressPrometheusMiddleware {
     this.collectGCMetrics = opts.collectGCMetrics
     this.exclude = opts.exclude
     this.excludePaths = opts.excludePaths
-    this.url = opts.url
+    this.url = opts.url.startsWith('/') ? opts.url : `/${opts.url}`
+  }
+}
+
+export class ExpressPrometheusMiddleware {
+  constructor (options: Static<typeof Options> = {}) {
+    privateVariablesInstanceMap.set(this, new ExpressPrometheusMiddlewarePrivateVariables(options))
 
     if (this.collectDefaultMetrics) {
       const defaultMetricsOptions = Object.assign({}, this.collectDefaultMetrics)
@@ -199,9 +198,26 @@ export class ExpressPrometheusMiddleware {
     if (this.collectGCMetrics) {
       collectGarbageCollectionMetrics()
     }
+  }
 
-    // After transpiling to JavaScript, readonly properties can be overwritten. Freezing the object avoids this.
-    Object.freeze(this)
+  static get version (): string {
+    return manifest.version
+  }
+
+  get collectDefaultMetrics (): boolean | Prometheus.DefaultMetricsCollectorConfiguration {
+    return privateVariablesInstanceMap.get(this).collectDefaultMetrics
+  }
+
+  get collectGCMetrics (): boolean {
+    return privateVariablesInstanceMap.get(this).collectGCMetrics
+  }
+
+  get exclude (): (req: express.Request) => boolean {
+    return privateVariablesInstanceMap.get(this).exclude
+  }
+
+  get excludePaths (): string[] {
+    return privateVariablesInstanceMap.get(this).excludePaths
   }
 
   get handler (): express.RequestHandler {
@@ -277,5 +293,9 @@ export class ExpressPrometheusMiddleware {
         next(e)
       }
     }
+  }
+
+  get url (): string {
+    return privateVariablesInstanceMap.get(this).url
   }
 }
