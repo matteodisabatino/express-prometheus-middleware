@@ -5,7 +5,10 @@
 
 ### Bug Fixes
 
-* typo on CHANGELOG ([11b1336](https://github.com/matteodisabatino/express-prometheus-middleware/commit/11b13369b49179ff693614dd022700a96596557e))## 2.0.1 (2022-03-26)
+* typo on CHANGELOG ([11b1336](https://github.com/matteodisabatino/express-prometheus-middleware/commit/11b13369b49179ff693614dd022700a96596557e))
+
+
+## 2.0.1 (2022-03-26)
 
 
 ### Bug Fixes
