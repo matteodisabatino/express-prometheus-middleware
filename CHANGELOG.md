@@ -1,6 +1,11 @@
 
 
-## 2.0.2 (2022-03-26)
+## 2.0.3 (2022-03-27)
+
+
+### Bug Fixes
+
+* no importing typescript helpers ([d00e9d2](https://github.com/matteodisabatino/express-prometheus-middleware/commit/d00e9d22a041ccffcc28affa62f1d83ab731417e))## 2.0.2 (2022-03-26)
 
 
 ### Bug Fixes
