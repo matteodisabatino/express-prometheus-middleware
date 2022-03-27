@@ -1,6 +1,11 @@
 
 
-## 2.0.3 (2022-03-27)
+## 2.0.4 (2022-03-27)
+
+
+### Bug Fixes
+
+* creation of symlink for package.json is now made by postinstall hook ([6288b73](https://github.com/matteodisabatino/express-prometheus-middleware/commit/6288b732b8cd529547962ad64ab0a37e82e12332))## 2.0.3 (2022-03-27)
 
 
 ### Bug Fixes
