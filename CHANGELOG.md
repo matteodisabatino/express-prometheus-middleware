@@ -1,6 +1,11 @@
 
 
-## 2.0.4 (2022-03-27)
+## 2.0.5 (2022-03-27)
+
+
+### Bug Fixes
+
+* rimraf and symian now are production dependencies ([0f64aab](https://github.com/matteodisabatino/express-prometheus-middleware/commit/0f64aaba328d6bbaa18f711b5df4ae01f43d2bb0))## 2.0.4 (2022-03-27)
 
 
 ### Bug Fixes
