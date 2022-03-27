@@ -1,15 +1,17 @@
 'use strict';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExpressPrometheusMiddleware = void 0;
-const tslib_1 = require("tslib");
 const runtypes_1 = require("runtypes");
-const gc_info_1 = tslib_1.__importDefault(require("@matteodisabatino/gc_info"));
-const on_finished_1 = tslib_1.__importDefault(require("on-finished"));
-const prom_client_1 = tslib_1.__importDefault(require("prom-client"));
-const semver_1 = tslib_1.__importDefault(require("semver"));
+const gc_info_1 = __importDefault(require("@matteodisabatino/gc_info"));
+const on_finished_1 = __importDefault(require("on-finished"));
+const prom_client_1 = __importDefault(require("prom-client"));
+const semver_1 = __importDefault(require("semver"));
 const data_types_1 = require("./libs/data_types");
 const utils_1 = require("./libs/utils");
-const package_json_1 = tslib_1.__importDefault(require("../package.json"));
+const package_json_1 = __importDefault(require("../package.json"));
 const privateVariablesInstanceMap = new WeakMap();
 const collectGarbageCollectionMetrics = () => {
     const labelNames = ['gctype'];

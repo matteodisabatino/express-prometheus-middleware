@@ -1,10 +1,12 @@
 'use strict';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Options = exports.ExpressRequest = exports.CompleteOptions = exports.PromClientDefaultMetricsCollectorConfiguration = exports.PromClientRegistry = void 0;
-const tslib_1 = require("tslib");
 const runtypes_1 = require("runtypes");
-const express_1 = tslib_1.__importDefault(require("express"));
-const prom_client_1 = tslib_1.__importDefault(require("prom-client"));
+const express_1 = __importDefault(require("express"));
+const prom_client_1 = __importDefault(require("prom-client"));
 exports.PromClientRegistry = (0, runtypes_1.Guard)((obj) => obj instanceof prom_client_1.default.Registry);
 exports.PromClientDefaultMetricsCollectorConfiguration = (0, runtypes_1.Guard)((obj) => {
     try {

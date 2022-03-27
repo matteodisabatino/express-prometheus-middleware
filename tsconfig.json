@@ -7,7 +7,7 @@
     ],
     "declaration": true,
     "declarationMap": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
