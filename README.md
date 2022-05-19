@@ -6,6 +6,8 @@ By default, the module exposes information about Prometheus default metrics, gar
 
 Since version 1.0.0 the module supports all existing Node.js versions from 6.0.0. [express](https://www.npmjs.com/package/express) and [prom-client](https://www.npmjs.com/package/prom-client) are required as peer dependencies.
 
+Since version 3.0.0 the module has got its own [official Grafana dashboard](https://grafana.com/grafana/dashboards/16306). Please note that to have information about usage of CPU and RAM, [node_exporter](https://github.com/prometheus/node_exporter) must be used in conjunction.
+
 The module is write in TypeScript following the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). If you find something not compliant with, please provide a pull request.
 
 In general every pull request that will:
@@ -55,8 +57,8 @@ const { ExpressPrometheusMiddleware } = require('@matteodisabatino/express-prome
 const app = express()
 const epm = new ExpressPrometheusMiddleware({
   exclude: (req) => req.method === 'POST' && req.path === '/accounts'
-  // This setting will prevent to generate duration and the throughput metrics
-  // for route POST /accounts
+  // This setting will prevent to generate the duration and the throughput
+  // metrics for route POST /accounts
 })
 
 app.use(epm.handler)
