@@ -1,5 +1,17 @@
 
 
+# 3.0.0 (2022-05-19)
+
+
+### Code Refactoring
+
+* add Grafana dashboard ([1512da7](https://github.com/matteodisabatino/express-prometheus-middleware/commit/1512da7dd613eba3f34e41d2e721aa18d07cbcc0))
+
+
+### BREAKING CHANGES
+
+* fully deprecation for versions 1 and 2 of the module
+
 ## 2.0.5 (2022-03-27)
 
 
