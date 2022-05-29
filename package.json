@@ -61,7 +61,7 @@
     "license": "ISC",
     "description": "Exposes Prometheus metrics for express applications",
     "dependencies": {
-        "@matteodisabatino/gc_info": "^1.3.0",
+        "@matteodisabatino/gc_info": "^1.4.1",
         "on-finished": "^2.3.0",
         "rimraf": "^3.0.2",
         "runtypes": "^6.4.1",
@@ -79,11 +79,11 @@
         "@types/on-finished": "^2.3.1",
         "@types/semver": "^7.3.8",
         "@types/supertest": "^2.0.12",
-        "@typescript-eslint/eslint-plugin": "^5.25.0",
-        "@typescript-eslint/parser": "^5.25.0",
+        "@typescript-eslint/eslint-plugin": "^5.26.0",
+        "@typescript-eslint/parser": "^5.26.0",
         "ava": "^4.2.0",
         "copyfiles": "^2.4.1",
-        "eslint": "^8.15.0",
+        "eslint": "^8.16.0",
         "eslint-config-standard": "^17.0.0",
         "eslint-plugin-ava": "^13.2.0",
         "eslint-plugin-import": "^2.26.0",
@@ -93,7 +93,7 @@
         "prom-client": "^14.0.1",
         "release-it": "^15.0.0",
         "supertest": "^6.2.3",
-        "typescript": "^4.6.4"
+        "typescript": "^4.7.2"
     },
     "engines": {
         "node": ">=6"
