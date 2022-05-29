@@ -1,5 +1,12 @@
 
 
+# 3.1.0 (2022-05-29)
+
+
+### Features
+
+* updated @matteodisabatino/gc_info to support node v18 ([9e07afd](https://github.com/matteodisabatino/express-prometheus-middleware/commit/9e07afd68f17c05f91ad9291635aa3e099e315e6))
+
 # 3.0.0 (2022-05-19)
 
 
