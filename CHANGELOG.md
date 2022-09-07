@@ -1,5 +1,12 @@
 
 
+## 3.1.2 (2022-09-07)
+
+
+### Bug Fixes
+
+* always copying the file to avoid problems ([3230734](https://github.com/matteodisabatino/express-prometheus-middleware/commit/3230734e080c5c92fd3b7cafe461a8ea2a0c9206))
+
 ## 3.1.1 (2022-09-07)
 
 
