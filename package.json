@@ -10,7 +10,7 @@
         "build": "tsc",
         "lint": "eslint src test --fix --ext ts",
         "postbuild": "copyfiles -e \"**/*.ts\" \"src/**/*\" \"test/**/*\" dist/",
-        "postinstall": "rimraf dist/package.json && symian ../package.json dist/package.json",
+        "postinstall": "rimraf dist/package.json && node createSymlinkOrCopy.js",
         "prebuild": "rimraf dist",
         "release": "release-it --ci",
         "test": "npx nyc --reporter=text ava \"test/**/*.spec.ts\" --check-coverage --lines 70"
@@ -65,8 +65,7 @@
         "on-finished": "^2.3.0",
         "rimraf": "^3.0.2",
         "runtypes": "^6.4.1",
-        "semver": "^7.3.7",
-        "symian": "^1.0.2"
+        "semver": "^7.3.7"
     },
     "peerDependencies": {
         "express": "3 || 4",

@@ -16,6 +16,7 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "ava/no-ignored-test-files": "off"
+    "ava/no-ignored-test-files": "off",
+    "no-var": "off"
   }
 }
