@@ -1,5 +1,12 @@
 
 
+## 3.1.1 (2022-09-07)
+
+
+### Bug Fixes
+
+* Windows needs special permissions to create symlinks, hence for this OS is better to create a copy of the file ([2d72e5d](https://github.com/matteodisabatino/express-prometheus-middleware/commit/2d72e5d90f14843d4e5b14db1e86047f8727f9f2))
+
 # 3.1.0 (2022-05-29)
 
 
