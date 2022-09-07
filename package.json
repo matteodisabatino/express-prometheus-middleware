@@ -1,100 +1,100 @@
 {
-    "name": "@matteodisabatino/express-prometheus-middleware",
-    "version": "3.1.1",
-    "main": "dist/src/index.js",
-    "typings": "dist/src/index.d.ts",
-    "files": [
-        "dist"
-    ],
-    "scripts": {
-        "build": "tsc",
-        "lint": "eslint src test --fix --ext ts",
-        "postbuild": "copyfiles -e \"**/*.ts\" \"src/**/*\" \"test/**/*\" dist/",
-        "postinstall": "rimraf dist/package.json && node createSymlinkOrCopy.js",
-        "prebuild": "rimraf dist",
-        "release": "release-it --ci",
-        "test": "npx nyc --reporter=text ava \"test/**/*.spec.ts\" --check-coverage --lines 70"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/matteodisabatino/express-prometheus-middleware"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "keywords": [
-        "express",
-        "express prometheus",
-        "express prometheus metrics",
-        "express prometheus monit",
-        "express prometheus monitoring",
-        "express metrics",
-        "express middleware",
-        "express middleware monit",
-        "express middleware monitoring",
-        "express monit",
-        "express monitoring",
-        "prometheus",
-        "prometheus metrics",
-        "prometheus monit",
-        "prometheus monitoring",
-        "metrics",
-        "metrics middleware",
-        "metrics prometheus",
-        "middleware",
-        "middleware express",
-        "middleware express prometheus",
-        "middleware express monit",
-        "middleware express monitoring",
-        "middleware monit",
-        "middleware monitoring",
-        "monit",
-        "monit middleware",
-        "monit middleware prometheus",
-        "monit prometheus",
-        "monitoring",
-        "monitoring middleware",
-        "monitoring middleware prometheus",
-        "monitoring prometheus"
-    ],
-    "author": "Matteo Di Sabatino (@matteodisabatino)",
-    "license": "ISC",
-    "description": "Exposes Prometheus metrics for express applications",
-    "dependencies": {
-        "@matteodisabatino/gc_info": "^1.4.1",
-        "on-finished": "^2.3.0",
-        "rimraf": "^3.0.2",
-        "runtypes": "^6.4.1",
-        "semver": "^7.3.7"
-    },
-    "peerDependencies": {
-        "express": "3 || 4",
-        "prom-client": "11 || 12 || 13 || 14"
-    },
-    "devDependencies": {
-        "@ava/typescript": "^3.0.1",
-        "@release-it/conventional-changelog": "^5.0.0",
-        "@types/express": "^4.17.13",
-        "@types/on-finished": "^2.3.1",
-        "@types/semver": "^7.3.8",
-        "@types/supertest": "^2.0.12",
-        "@typescript-eslint/eslint-plugin": "^5.26.0",
-        "@typescript-eslint/parser": "^5.26.0",
-        "ava": "^4.2.0",
-        "copyfiles": "^2.4.1",
-        "eslint": "^8.16.0",
-        "eslint-config-standard": "^17.0.0",
-        "eslint-plugin-ava": "^13.2.0",
-        "eslint-plugin-import": "^2.26.0",
-        "eslint-plugin-n": "^15.2.0",
-        "eslint-plugin-promise": "^6.0.0",
-        "express": "^4.18.1",
-        "prom-client": "^14.0.1",
-        "release-it": "^15.0.0",
-        "supertest": "^6.2.3",
-        "typescript": "^4.7.2"
-    },
-    "engines": {
-        "node": ">=6"
-    }
+  "name": "@matteodisabatino/express-prometheus-middleware",
+  "version": "3.1.1",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src test --fix --ext ts",
+    "postbuild": "copyfiles -e \"**/*.ts\" \"src/**/*\" \"test/**/*\" dist/",
+    "postinstall": "rimraf dist/package.json && copyfiles package.json dist/",
+    "prebuild": "rimraf dist",
+    "release": "release-it --ci",
+    "test": "npx nyc --reporter=text ava \"test/**/*.spec.ts\" --check-coverage --lines 70"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matteodisabatino/express-prometheus-middleware"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "express",
+    "express prometheus",
+    "express prometheus metrics",
+    "express prometheus monit",
+    "express prometheus monitoring",
+    "express metrics",
+    "express middleware",
+    "express middleware monit",
+    "express middleware monitoring",
+    "express monit",
+    "express monitoring",
+    "prometheus",
+    "prometheus metrics",
+    "prometheus monit",
+    "prometheus monitoring",
+    "metrics",
+    "metrics middleware",
+    "metrics prometheus",
+    "middleware",
+    "middleware express",
+    "middleware express prometheus",
+    "middleware express monit",
+    "middleware express monitoring",
+    "middleware monit",
+    "middleware monitoring",
+    "monit",
+    "monit middleware",
+    "monit middleware prometheus",
+    "monit prometheus",
+    "monitoring",
+    "monitoring middleware",
+    "monitoring middleware prometheus",
+    "monitoring prometheus"
+  ],
+  "author": "Matteo Di Sabatino (@matteodisabatino)",
+  "license": "ISC",
+  "description": "Exposes Prometheus metrics for express applications",
+  "dependencies": {
+    "@matteodisabatino/gc_info": "^1.4.1",
+    "copyfiles": "^2.4.1",
+    "on-finished": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "runtypes": "^6.4.1",
+    "semver": "^7.3.7"
+  },
+  "peerDependencies": {
+    "express": "3 || 4",
+    "prom-client": "11 || 12 || 13 || 14"
+  },
+  "devDependencies": {
+    "@ava/typescript": "^3.0.1",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/express": "^4.17.13",
+    "@types/on-finished": "^2.3.1",
+    "@types/semver": "^7.3.8",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "ava": "^4.2.0",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-ava": "^13.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "express": "^4.18.1",
+    "prom-client": "^14.0.1",
+    "release-it": "^15.0.0",
+    "supertest": "^6.2.3",
+    "typescript": "^4.7.2"
+  },
+  "engines": {
+    "node": ">=6"
+  }
 }
