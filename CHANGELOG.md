@@ -1,5 +1,17 @@
 
 
+# 4.0.0 (2023-08-03)
+
+
+### Code Refactoring
+
+* using req.route if available ([28f8076](https://github.com/matteodisabatino/express-prometheus-middleware/commit/28f80769ffa55321c198bbf73f804ea1469d1c20))
+
+
+### BREAKING CHANGES
+
+* if req.route is available metric refers to it instead of req.path
+
 ## 3.1.2 (2022-09-07)
 
 
