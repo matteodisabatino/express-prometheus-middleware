@@ -1,7 +1,7 @@
-import { Static } from 'runtypes';
-import express from 'express';
+import { type Static } from 'runtypes';
+import type express from 'express';
 import Prometheus from 'prom-client';
-import { Options } from './libs/data_types';
+import { type Options } from './libs/data_types';
 export declare class ExpressPrometheusMiddleware {
     constructor(options?: Static<typeof Options>);
     static get version(): string;

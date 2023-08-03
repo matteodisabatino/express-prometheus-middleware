@@ -2,9 +2,9 @@
 import {
   Boolean,
   Contract,
-  Static
+  type Static
 } from 'runtypes'
-import express from 'express'
+import type express from 'express'
 import gcInfo from '@matteodisabatino/gc_info'
 import onFinished from 'on-finished'
 import Prometheus from 'prom-client'
@@ -13,7 +13,7 @@ import semver from 'semver'
 import {
   CompleteOptions,
   ExpressRequest,
-  Options
+  type Options
 } from './libs/data_types'
 import { getUrlRegExp, isPathExcluded } from './libs/utils'
 
@@ -34,7 +34,7 @@ const collectGarbageCollectionMetrics = (): void => {
     labelNames
   })
 
-  const memoryMetrics: { [metricName: string]: Prometheus.Gauge<string> } = {
+  const memoryMetrics: Record<string, Prometheus.Gauge<string>> = {
     totalHeapSize: new Prometheus.Gauge({
       name: 'nodejs_gc_total_heap_size',
       help: 'Number of bytes V8 has allocated for the heap',
@@ -269,18 +269,20 @@ export class ExpressPrometheusMiddleware {
         }
 
         if (contractExclude(req)) {
-          return next()
+          next()
+          return
         }
 
         if (isPathExcluded(this.excludePaths, req.path)) {
-          return next()
+          next()
+          return
         }
 
         const endTimer = HTTPDuration.startTimer()
         onFinished(res, () => {
           const labels = {
             method: req.method,
-            path: req.path,
+            path: req.route ? req.baseUrl + String(req.route.path) : req.path,
             status: res.statusCode
           }
 

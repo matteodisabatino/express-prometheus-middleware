@@ -33,7 +33,7 @@ export const PromClientDefaultMetricsCollectorConfiguration = Guard((obj: any): 
     Optional(Number).check(obj.eventLoopMonitoringPrecision)
 
     // prom-client@^13, prom-client@^14
-    Optional(Guard((obj: any): obj is Object => Object.prototype.toString.call(obj) === '[object Object]')).check(obj.labels)
+    Optional(Guard((obj: any): obj is globalThis.Record<string, unknown> => Object.prototype.toString.call(obj) === '[object Object]')).check(obj.labels)
 
     return true
   } catch {

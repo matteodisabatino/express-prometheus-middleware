@@ -221,16 +221,18 @@ class ExpressPrometheusMiddleware {
                     return;
                 }
                 if (contractExclude(req)) {
-                    return next();
+                    next();
+                    return;
                 }
                 if ((0, utils_1.isPathExcluded)(this.excludePaths, req.path)) {
-                    return next();
+                    next();
+                    return;
                 }
                 const endTimer = HTTPDuration.startTimer();
                 (0, on_finished_1.default)(res, () => {
                     const labels = {
                         method: req.method,
-                        path: req.path,
+                        path: req.route ? req.baseUrl + String(req.route.path) : req.path,
                         status: res.statusCode
                     };
                     HTTPThroughput.inc(labels);
