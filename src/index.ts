@@ -162,7 +162,7 @@ const collectGarbageCollectionMetrics = (): void => {
 }
 
 class ExpressPrometheusMiddlewarePrivateVariables {
-  readonly collectDefaultMetrics: boolean | Prometheus.DefaultMetricsCollectorConfiguration<Prometheus.RegistryContentType>
+  readonly collectDefaultMetrics: boolean | Prometheus.DefaultMetricsCollectorConfiguration
   readonly collectGCMetrics: boolean
   readonly exclude: (req: express.Request) => boolean
   readonly excludePaths: string[]
@@ -192,7 +192,7 @@ export class ExpressPrometheusMiddleware {
 
     if (this.collectDefaultMetrics) {
       const defaultMetricsOptions = Object.assign({}, this.collectDefaultMetrics)
-      Prometheus.collectDefaultMetrics(defaultMetricsOptions as Prometheus.DefaultMetricsCollectorConfiguration<Prometheus.RegistryContentType>)
+      Prometheus.collectDefaultMetrics(defaultMetricsOptions as Prometheus.DefaultMetricsCollectorConfiguration)
     }
 
     if (this.collectGCMetrics) {
@@ -204,7 +204,7 @@ export class ExpressPrometheusMiddleware {
     return manifest.version
   }
 
-  get collectDefaultMetrics (): boolean | Prometheus.DefaultMetricsCollectorConfiguration<Prometheus.RegistryContentType> {
+  get collectDefaultMetrics (): boolean | Prometheus.DefaultMetricsCollectorConfiguration {
     return privateVariablesInstanceMap.get(this).collectDefaultMetrics
   }
 

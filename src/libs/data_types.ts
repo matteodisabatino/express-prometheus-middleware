@@ -15,7 +15,7 @@ import Prometheus from 'prom-client'
 
 export const PromClientRegistry = Guard((obj: any): obj is Prometheus.Registry => obj instanceof Prometheus.Registry)
 
-export const PromClientDefaultMetricsCollectorConfiguration = Guard((obj: any): obj is Prometheus.DefaultMetricsCollectorConfiguration<Prometheus.RegistryContentType> => {
+export const PromClientDefaultMetricsCollectorConfiguration = Guard((obj: any): obj is Prometheus.DefaultMetricsCollectorConfiguration => {
   try {
     // prom-client@^11
     Optional(Number).check(obj.timeout)
