@@ -1,5 +1,12 @@
 
 
+# 4.1.0 (2023-11-08)
+
+
+### Features
+
+* support prom-client v15 ([9eae850](https://github.com/matteodisabatino/express-prometheus-middleware/commit/9eae8504f43cc6020520a3857f7c0c38c728d143))
+
 # 4.0.0 (2023-08-03)
 
 
