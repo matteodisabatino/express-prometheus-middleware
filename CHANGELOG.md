@@ -1,5 +1,12 @@
 
 
+## 4.1.1 (2023-11-08)
+
+
+### Reverts
+
+* Revert "feat: support prom-client v15" ([50fc946](https://github.com/matteodisabatino/express-prometheus-middleware/commit/50fc946d309a8d1c8158544d4dcd3e356e5191c2))
+
 # 4.1.0 (2023-11-08)
 
 
