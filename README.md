@@ -50,6 +50,8 @@ app.listen(process.env.PORT, () => {
 
 ### Example of advanced usage
 
+You can easily configure your Express Prometheus Middleware instance to ignore specific endpoints in your application.
+
 ```js
 const express = require('express')
 const { ExpressPrometheusMiddleware } = require('@matteodisabatino/express-prometheus-middleware')
@@ -67,3 +69,39 @@ app.listen(process.env.PORT, () => {
   console.log('Server has been started')
 })
 ```
+
+### Example of usage with custom metrics reporting
+
+It's likely that you will want to provide additional data to your Prometheus scraper and Express Prometheus Middleware does not get in your way with this:
+
+```js
+const express = require('express')
+const { ExpressPrometheusMiddleware } = require('@matteodisabatino/express-prometheus-middleware')
+// npm install --save prom-client
+const Prometheus = require('prom-client')
+
+const app = express()
+
+const gauge = new Prometheus.Gauge({
+  name: `myamazingapp_interesting_datapoint`,
+  help: `A very helpful but terse explanation of this metric`,
+  collect () {
+  // Add your own custom logic here
+    this.inc();
+  },
+  // Or more likely
+  async collect () {
+    const data = SomeRepository.getSomeRecordCounts(...);
+    this.set(data.total);
+  }
+})
+
+app.use(epm.handler)
+
+app.listen(process.env.PORT, () => {
+  console.log('Server has been started')
+})
+
+```
+
+Viewing `/metrics` will then display your data alongside the information provided by this library. See the [Prometheus Client](https://github.com/siimon/prom-client/blob/master/example/server.js) documentation for better examples.
