@@ -8,6 +8,10 @@ Since version 1.0.0 the module supports all existing Node.js versions from 6.0.0
 
 Since version 3.0.0 the module has got its own [official Grafana dashboard](https://grafana.com/grafana/dashboards/16306). Please note that to have information about usage of CPU and RAM, [node_exporter](https://github.com/prometheus/node_exporter) must be used in conjunction.
 
+Since version 4.0.0 the module supports all existing Node.js versions from 14.0.0.
+
+Since version 4.1.0 the module supports all existing Node.js versions from 16.0.0.
+
 The module is write in TypeScript following the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). If you find something not compliant with, please provide a pull request.
 
 In general every pull request that will:
