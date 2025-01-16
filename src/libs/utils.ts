@@ -1,4 +1,3 @@
-'use strict'
 export const getUrlRegExp = (url: string): RegExp => new RegExp(`^${url}${url.endsWith('/') ? '' : '/'}?$`)
 
 export const isPathExcluded = (excludePaths: string[], path: string): boolean => {

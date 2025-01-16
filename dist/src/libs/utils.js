@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isPathExcluded = exports.getUrlRegExp = void 0;
 const getUrlRegExp = (url) => new RegExp(`^${url}${url.endsWith('/') ? '' : '/'}?$`);
