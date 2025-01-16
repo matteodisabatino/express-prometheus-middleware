@@ -12,6 +12,8 @@ Since version 4.0.0 the module supports all existing Node.js versions from 14.0.
 
 Since version 4.1.0 the module supports all existing Node.js versions from 16.0.0.
 
+Since version 5.0.0 the module supports only Node.js 20 or greater than or equal to 22.
+
 The module is write in TypeScript following the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). If you find something not compliant with, please provide a pull request.
 
 In general every pull request that will:
