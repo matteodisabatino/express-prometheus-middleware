@@ -1,5 +1,17 @@
 # Changelog
 
+# 6.0.0 (2025-01-16)
+
+
+### Code Refactoring
+
+* dropping support for garbage collection metrcs ([b24e15c](https://github.com/matteodisabatino/express-prometheus-middleware/commit/b24e15c7654989adf728c3610659acb962e4a6f2))
+
+
+### BREAKING CHANGES
+
+* garbage collection metrcs are not exposed anymore
+
 # 5.0.0 (2025-01-16)
 
 

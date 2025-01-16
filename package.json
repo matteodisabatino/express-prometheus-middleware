@@ -1,6 +1,6 @@
 {
   "name": "@matteodisabatino/express-prometheus-middleware",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
   "files": [
