@@ -1,6 +1,7 @@
+import assert from 'node:assert/strict'
 import express from 'express'
 import request from 'supertest'
-import test from 'ava'
+import test from 'node:test'
 
 import { ExpressPrometheusMiddleware } from '../src/index'
 
@@ -20,19 +21,18 @@ test.before(() => {
   app.get('/test4', (req, res) => res.sendStatus(200))
 })
 
-test('Should get metrics data', async t => {
-  // Call routes to get information about
+test('Should get metrics data', async () => {
+  // Call routes to generate metrics
   await request(app).get('/test1')
   await request(app).get('/test2')
   await request(app).get('/test3')
   await request(app).get('/test4')
 
-  const res = await request(app)
-    .get('/metrics')
+  const res = await request(app).get('/metrics')
 
-  t.is(res.status, 200)
-  t.is(res.text.includes('http_requests_total{method="GET",path="/test1",status="200"}'), false)
-  t.is(res.text.includes('http_requests_total{method="GET",path="/test2",status="200"}'), false)
-  t.is(res.text.includes('http_requests_total{method="GET",path="/test3",status="200"}'), true)
-  t.is(res.text.includes('http_requests_total{method="GET",path="/test4",status="200"}'), true)
+  assert.strictEqual(res.status, 200)
+  assert.ok(!res.text.includes('http_requests_total{method="GET",path="/test1",status="200"}'))
+  assert.ok(!res.text.includes('http_requests_total{method="GET",path="/test2",status="200"}'))
+  assert.ok(res.text.includes('http_requests_total{method="GET",path="/test3",status="200"}'))
+  assert.ok(res.text.includes('http_requests_total{method="GET",path="/test4",status="200"}'))
 })
