@@ -19,7 +19,6 @@ export declare const CompleteOptions: Record<{
         eventLoopMonitoringPrecision: Number;
         labels: import("runtypes").Constraint<import("runtypes").Unknown, globalThis.Record<string, unknown>, unknown>;
     }, false>]>;
-    collectGCMetrics: Boolean;
     exclude: Function;
     excludePaths: Array<String, false>;
     url: String;
@@ -34,7 +33,6 @@ export declare const Options: Partial<{
         eventLoopMonitoringPrecision: Number;
         labels: import("runtypes").Constraint<import("runtypes").Unknown, globalThis.Record<string, unknown>, unknown>;
     }, false>]>;
-    collectGCMetrics: Boolean;
     exclude: Function;
     excludePaths: Array<String, false>;
     url: String;

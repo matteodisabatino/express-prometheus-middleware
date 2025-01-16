@@ -24,7 +24,6 @@ export const PromClientDefaultMetricsCollectorConfiguration = Partial({
 
 export const CompleteOptions = Record({
   collectDefaultMetrics: Boolean.Or(PromClientDefaultMetricsCollectorConfiguration),
-  collectGCMetrics: Boolean,
   exclude: Function,
   excludePaths: Array(String),
   url: String
@@ -34,7 +33,6 @@ export const ExpressRequest = Guard((obj: unknown): obj is express.Request => Ob
 
 export const Options = Partial({
   collectDefaultMetrics: Boolean.Or(PromClientDefaultMetricsCollectorConfiguration),
-  collectGCMetrics: Boolean,
   exclude: Function,
   excludePaths: Array(String),
   url: String

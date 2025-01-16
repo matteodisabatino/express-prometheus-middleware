@@ -18,7 +18,6 @@ exports.PromClientDefaultMetricsCollectorConfiguration = (0, runtypes_1.Partial)
 });
 exports.CompleteOptions = (0, runtypes_1.Record)({
     collectDefaultMetrics: runtypes_1.Boolean.Or(exports.PromClientDefaultMetricsCollectorConfiguration),
-    collectGCMetrics: runtypes_1.Boolean,
     exclude: runtypes_1.Function,
     excludePaths: (0, runtypes_1.Array)(runtypes_1.String),
     url: runtypes_1.String
@@ -26,7 +25,6 @@ exports.CompleteOptions = (0, runtypes_1.Record)({
 exports.ExpressRequest = (0, runtypes_1.Guard)((obj) => Object.prototype.isPrototypeOf.call(express_1.default.request, obj));
 exports.Options = (0, runtypes_1.Partial)({
     collectDefaultMetrics: runtypes_1.Boolean.Or(exports.PromClientDefaultMetricsCollectorConfiguration),
-    collectGCMetrics: runtypes_1.Boolean,
     exclude: runtypes_1.Function,
     excludePaths: (0, runtypes_1.Array)(runtypes_1.String),
     url: runtypes_1.String

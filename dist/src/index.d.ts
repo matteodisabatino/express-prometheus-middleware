@@ -6,7 +6,6 @@ export declare class ExpressPrometheusMiddleware {
     constructor(options?: Static<typeof Options>);
     static get version(): string;
     get collectDefaultMetrics(): boolean | Prometheus.DefaultMetricsCollectorConfiguration<Prometheus.RegistryContentType>;
-    get collectGCMetrics(): boolean;
     get exclude(): (req: express.Request) => boolean;
     get excludePaths(): string[];
     get handler(): express.RequestHandler;

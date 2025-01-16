@@ -2,7 +2,7 @@
 
 Exposes Prometheus metrics for express applications. Based on [@trussle/tricorder](https://www.npmjs.com/package/@trussle/tricorder).
 
-By default, the module exposes information about Prometheus default metrics, garbage collection metrics and the duration and the throughput of each HTTP route that has been called at least once via endpoint `/metrics`. However, you can customize this behaviour via options.
+By default, the module exposes information about Prometheus default metrics and the duration and the throughput of each HTTP route that has been called at least once via endpoint `/metrics`. However, you can customize this behaviour via options.
 
 Since version 1.0.0 the module supports all existing Node.js versions from 6.0.0. [express](https://www.npmjs.com/package/express) and [prom-client](https://www.npmjs.com/package/prom-client) are required as peer dependencies.
 
@@ -13,6 +13,8 @@ Since version 4.0.0 the module supports all existing Node.js versions from 14.0.
 Since version 4.1.0 the module supports all existing Node.js versions from 16.0.0.
 
 Since version 5.0.0 the module supports only Node.js 20 or greater than or equal to 22.
+
+Since version 6.0.0 the module doesn't export garbage collection metrics anymore.
 
 The module is write in TypeScript following the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). If you find something not compliant with, please provide a pull request.
 
@@ -29,7 +31,6 @@ are well accepted.
 | Options | Type | Meaning | Default value |
 | - | - | - | - |
 | collectDefaultMetrics | boolean \| Prometheus.DefaultMetricsCollectorConfiguration | Whether or not to collect Prometheus default metrics or configuration for prom-client | true |
-| collectGCMetrics | boolean | Whether or not to collect garbage collection metrics | true |
 | exclude | (req: express.Request): boolean | Avoid all matching routes to expose duration and throughput information | (req) => false |
 | excludePaths | string[] | Avoid all matching paths to expose duration and throughput information | [] |
 | url | string | The path to which expose metrics | /metrics |

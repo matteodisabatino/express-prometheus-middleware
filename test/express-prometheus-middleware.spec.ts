@@ -15,10 +15,10 @@ test.before(() => {
   app = express()
   app.use(epm.handler)
 
-  app.get('/test1', (req, res) => res.sendStatus(200))
-  app.get('/test2', (req, res) => res.sendStatus(200))
-  app.get('/test3', (req, res) => res.sendStatus(200))
-  app.get('/test4', (req, res) => res.sendStatus(200))
+  app.get('/test1', (req, res) => { res.sendStatus(200) })
+  app.get('/test2', (req, res) => { res.sendStatus(200) })
+  app.get('/test3', (req, res) => { res.sendStatus(200) })
+  app.get('/test4', (req, res) => { res.sendStatus(200) })
 })
 
 test('Should get metrics data', async () => {

@@ -61,12 +61,10 @@
   "license": "ISC",
   "description": "Exposes Prometheus metrics for express applications",
   "dependencies": {
-    "@matteodisabatino/gc_info": "^2.0.1",
     "copyfiles": "^2.4.1",
     "on-finished": "^2.4.1",
     "rimraf": "^6.0.1",
-    "runtypes": "^6.7.0",
-    "semver": "^7.5.4"
+    "runtypes": "^6.7.0"
   },
   "peerDependencies": {
     "express": "3 || 4",
@@ -76,7 +74,6 @@
     "@release-it/conventional-changelog": "^10.0.0",
     "@types/express": "^5.0.0",
     "@types/on-finished": "^2.3.4",
-    "@types/semver": "^7.5.5",
     "@types/supertest": "^6.0.2",
     "eslint": "^9.18.0",
     "express": "^4.18.2",
