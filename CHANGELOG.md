@@ -1,4 +1,16 @@
+# Changelog
 
+# 5.0.0 (2025-01-16)
+
+
+### Code Refactoring
+
+* dropping support for node prior to version 20 ([08989fc](https://github.com/matteodisabatino/express-prometheus-middleware/commit/08989fcd81285a40bae70227e72b9955e11d00a7))
+
+
+### BREAKING CHANGES
+
+* Node.js 20 or greater than or equal to 22 are required
 
 ## 4.2.6 (2025-01-16)
 
