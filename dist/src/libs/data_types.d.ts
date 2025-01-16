@@ -1,4 +1,3 @@
-/// <reference types="qs" />
 import { Array, Boolean, Function, Partial, Record, String } from 'runtypes';
 import express from 'express';
 import Prometheus from 'prom-client';
