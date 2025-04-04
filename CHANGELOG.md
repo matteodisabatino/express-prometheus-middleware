@@ -1,5 +1,12 @@
 # Changelog
 
+# 6.1.0 (2025-04-04)
+
+
+### Features
+
+* supporting Express 5 ([400a508](https://github.com/matteodisabatino/express-prometheus-middleware/commit/400a5089b6db6f4898309a96f388681a89f3f193))
+
 # 6.0.0 (2025-01-16)
 
 
