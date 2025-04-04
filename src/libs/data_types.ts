@@ -2,38 +2,38 @@ import {
   Array,
   Boolean,
   Function,
-  Guard,
   Number,
-  Partial,
-  Record,
-  String
+  Object,
+  String,
+  Union,
+  Unknown
 } from 'runtypes'
 import express from 'express'
 import Prometheus from 'prom-client'
 
-export const PromClientRegistry = Guard((obj: unknown): obj is Prometheus.Registry => obj instanceof Prometheus.Registry)
+export const PromClientRegistry = Unknown.withGuard((obj: unknown): obj is Prometheus.Registry => obj instanceof Prometheus.Registry)
 
-export const PromClientDefaultMetricsCollectorConfiguration = Partial({
-  timeout: Number, // prom-client@^11
-  register: PromClientRegistry, // prom-client@^11, prom-client@^12, prom-client@^13, prom-client@^14
-  prefix: String, // prom-client@^12, prom-client@^13, prom-client@^14
-  gcDurationBuckets: Array(Number), // prom-client@^12, prom-client@^13, prom-client@^14
-  eventLoopMonitoringPrecision: Number, // prom-client@^12, prom-client@^13, prom-client@^14
-  labels: Guard((obj: unknown): obj is globalThis.Record<string, unknown> => Object.prototype.toString.call(obj) === '[object Object]')// prom-client@^13, prom-client@^14
+export const PromClientDefaultMetricsCollectorConfiguration = Object({
+  timeout: Number.undefinedable().optional(), // prom-client@^11
+  register: PromClientRegistry.undefinedable().optional(), // prom-client@^11, prom-client@^12, prom-client@^13, prom-client@^14
+  prefix: String.undefinedable().optional(), // prom-client@^12, prom-client@^13, prom-client@^14
+  gcDurationBuckets: Array(Number).undefinedable().optional(), // prom-client@^12, prom-client@^13, prom-client@^14
+  eventLoopMonitoringPrecision: Number.undefinedable().optional(), // prom-client@^12, prom-client@^13, prom-client@^14
+  labels: Unknown.withGuard((obj: unknown): obj is Record<string, unknown> => globalThis.Object.prototype.toString.call(obj) === '[object Object]').undefinedable().optional() // prom-client@^13, prom-client@^14
 })
 
-export const CompleteOptions = Record({
-  collectDefaultMetrics: Boolean.Or(PromClientDefaultMetricsCollectorConfiguration),
+export const CompleteOptions = Object({
+  collectDefaultMetrics: Union(Boolean, PromClientDefaultMetricsCollectorConfiguration),
   exclude: Function,
   excludePaths: Array(String),
   url: String
 })
 
-export const ExpressRequest = Guard((obj: unknown): obj is express.Request => Object.prototype.isPrototypeOf.call(express.request, obj as object))
+export const ExpressRequest = Unknown.withGuard((obj: unknown): obj is express.Request => globalThis.Object.prototype.isPrototypeOf.call(express.request, obj as object))
 
-export const Options = Partial({
-  collectDefaultMetrics: Boolean.Or(PromClientDefaultMetricsCollectorConfiguration),
-  exclude: Function,
-  excludePaths: Array(String),
-  url: String
+export const Options = Object({
+  collectDefaultMetrics: Union(Boolean, PromClientDefaultMetricsCollectorConfiguration).undefinedable().optional(),
+  exclude: Function.undefinedable().optional(),
+  excludePaths: Array(String).undefinedable().optional(),
+  url: String.undefinedable().optional()
 })

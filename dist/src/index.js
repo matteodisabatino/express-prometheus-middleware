@@ -48,7 +48,10 @@ class ExpressPrometheusMiddleware {
     }
     get handler() {
         const urlRegex = (0, utils_1.getUrlRegExp)(this.url);
-        const contractExclude = (0, runtypes_1.Contract)(data_types_1.ExpressRequest, runtypes_1.Boolean).enforce(this.exclude);
+        const contractExclude = (0, runtypes_1.Contract)({
+            receives: (0, runtypes_1.Tuple)(data_types_1.ExpressRequest),
+            returns: runtypes_1.Boolean
+        }).enforce(this.exclude);
         const labelNames = ['method', 'path', 'status'];
         const HTTPDuration = new prom_client_1.default.Histogram({
             name: 'http_request_duration_seconds',

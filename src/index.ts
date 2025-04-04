@@ -1,6 +1,7 @@
 import {
   Boolean,
   Contract,
+  Tuple,
   type Static
 } from 'runtypes'
 import type express from 'express'
@@ -67,10 +68,10 @@ export class ExpressPrometheusMiddleware {
 
   get handler (): express.RequestHandler {
     const urlRegex = getUrlRegExp(this.url)
-    const contractExclude = Contract(
-      ExpressRequest,
-      Boolean
-    ).enforce(this.exclude)
+    const contractExclude = Contract({
+      receives: Tuple(ExpressRequest),
+      returns: Boolean
+    }).enforce(this.exclude)
 
     const labelNames = ['method', 'path', 'status']
     const HTTPDuration = new Prometheus.Histogram({
